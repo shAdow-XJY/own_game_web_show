@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ThemeModel{
-  ThemeData themeData;
+  Brightness brightness;
 
   ThemeModel({
-    required this.themeData,
+    required this.brightness,
   });
 
   bool getDayMode(){
-    return themeData == ThemeData.light();
+    return brightness == Brightness.light;
   }
 }

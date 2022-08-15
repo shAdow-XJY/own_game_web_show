@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../action/theme_action.dart';
@@ -18,7 +20,7 @@ class AppState {
    * 这里用来初始化
    */
   AppState.initialState() {
-    themeModel = ThemeModel(themeData: ThemeData.dark());
+    themeModel = ThemeModel(brightness: Brightness.dark);
   }
 
   AppState copyWith ({themeModel,userModel,deviceModel}){

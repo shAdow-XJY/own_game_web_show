@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:own_game_web_show/home/home.dart';
 import 'package:own_game_web_show/redux/app_state/state.dart';
+import 'package:own_game_web_show/router/router.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 void main() {
@@ -23,8 +24,12 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                   debugShowCheckedModeBanner: false,
                   title: 'Campus Price',
-                  theme: store.state.themeModel.themeData,
-                  home: const MyHomePage(),
+                  theme: ThemeData(
+                    brightness: store.state.themeModel.brightness,
+                    fontFamily: 'Noto',
+                  ),
+                  initialRoute: '/homePage', //初始化加载的路由
+                  onGenerateRoute: onGenerateRoute,
               );
             }
         )

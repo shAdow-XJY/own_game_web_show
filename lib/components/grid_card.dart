@@ -70,14 +70,8 @@ class _GridCardState extends State<GridCard> with SingleTickerProviderStateMixin
                   borderRadius: BorderRadius.circular(30),
                   image: DecorationImage(
                     image: widget.assetImage,
-                    fit: BoxFit.scaleDown,
+                    fit: BoxFit.fill,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 50 * animation.value,
-                        spreadRadius: -10,
-                        offset: const Offset(0, 10))
-                  ],
                 ),
                 child: Stack(
                   children: [

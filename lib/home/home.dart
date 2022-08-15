@@ -18,9 +18,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   var obj = [
-    {'gameName': '前端面试-HTML+CSS.docx', 'imageUrl': 'assets/images/html5.png'},
-    {'gameName': '前端面试-JavaScript.docx', 'imageUrl': 'assets/images/javascript.png'},
-    {'gameName': '前端面试-Vue.docx', 'imageUrl': 'assets/images/vue.png'},
+    {'gameName': 'Super Mario', 'imageUrl': 'assets/images/Super Mario.png'},
+    {'gameName': 'Portal', 'imageUrl': 'assets/images/Portal.png'},
   ];
 
   int crossAxisCount = 5;
@@ -36,8 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
               /// 返回的就是下面的 VoidCallback callback
               return () => {
                 dayMode = store.state.themeModel.getDayMode(),
-                store.dispatch(SetThemeDataAction(
-                    themeData: dayMode ? ThemeData.dark() : ThemeData.light()))
+                store.dispatch(SetThemeDataAction(brightness: dayMode ? Brightness.dark : Brightness.light,))
               };
             },
             builder: (BuildContext context, VoidCallback callback) {
@@ -58,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 IconButton(
                   icon: const ImageIcon(AssetImage('assets/images/GitHub.png')),
                   onPressed: () {
-                    launchUrl(Uri.parse('https://github.com/shAdow-XJY/noteview'));
+                    launchUrl(Uri.parse('https://github.com/shAdow-XJY/own_game_web_show'));
                   },
                 ),
               ],
@@ -76,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemCount: obj.length,
                   //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    //横轴元素个数
+                      //横轴元素个数
                       crossAxisCount: crossAxisCount,
                       //纵轴间距
                       mainAxisSpacing: 5.0,
@@ -87,8 +85,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemBuilder: (BuildContext context, int index) {
                     //Widget Function(BuildContext context, int index)
                     return GridCard(
-                      cardName: obj[index]['gameName']??'',
-                      assetImage: AssetImage(obj[index]['imageUrl']??''),
+                      cardName: obj[index]['gameName']??'unkown',
+                      assetImage: AssetImage(obj[index]['imageUrl']??'assets/images/unkown.png'),
+                      onTap: (){
+                        Navigator.pushNamed(context, '/markdownPage', arguments: obj[index]['gameName']);
+                      },
                     );
 
                   });

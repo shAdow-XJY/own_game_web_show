@@ -3,13 +3,13 @@ import 'package:redux/redux.dart';
 import '../model/theme_model.dart';
 
 class SetThemeDataAction {
-  ThemeData? themeData;
+  Brightness? brightness;
 
-  SetThemeDataAction({this.themeData}) : super();
+  SetThemeDataAction({this.brightness}) : super();
 
   /// 设置themedata主题
   static ThemeModel setTheme(ThemeModel theme, SetThemeDataAction action) {
-    theme.themeData = action.themeData!;
+    theme.brightness = action.brightness!;
     return theme;
   }
 
