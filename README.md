@@ -15,8 +15,10 @@ a website for showing games made.
 > [博客shadow plus](https://github.com/shAdow-XJY/shAdow-XJY.github.io)
 2. campus price(还在开发中)项目的状态管理夜间模式切换功能
 > [campus price](https://github.com/shAdow-XJY/campusprice)
-3. note view 项目的页面展示框架
+3. note view 项目的页面展示框架与部署流程
 > [note view](https://github.com/shAdow-XJY/noteview)
 4. subFontPackage 的中文字体包体积优化功能
 > [subFontPackage](https://github.com/shAdow-XJY/subFontPackage)
 
+## build
+flutter build web --web-renderer html --release
