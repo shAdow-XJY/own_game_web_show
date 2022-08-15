@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             builder: (context, store) {
               return MaterialApp(
                   debugShowCheckedModeBanner: false,
-                  title: 'Campus Price',
+                  title: 'shadow game web',
                   theme: ThemeData(
                     brightness: store.state.themeModel.brightness,
                     fontFamily: 'Noto',

@@ -22,3 +22,5 @@ a website for showing games made.
 
 ## build
 flutter build web --web-renderer html --release
+
+basehref = '/own_game_web_show/'
