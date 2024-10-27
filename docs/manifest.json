@@ -1,11 +1,11 @@
 {
-    "name": "own_game_web_show",
-    "short_name": "own_game_web_show",
+    "name": "own_game_web",
+    "short_name": "own_game_web",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "a website for showing games made.",
+    "description": "A new Flutter project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

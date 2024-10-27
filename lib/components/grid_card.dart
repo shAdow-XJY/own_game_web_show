@@ -5,15 +5,17 @@ class GridCard extends StatefulWidget {
   final String cardName;
   final AssetImage assetImage;
   final VoidCallback? onTap;
+  final String tag;
   const GridCard({
     Key? key,
     required this.cardName,
     required this.assetImage,
     this.onTap,
+    required this.tag,
   }) : super(key: key);
 
   @override
-  _GridCardState createState() => _GridCardState();
+  State<GridCard> createState() => _GridCardState();
 }
 
 class _GridCardState extends State<GridCard> with SingleTickerProviderStateMixin
@@ -103,6 +105,14 @@ class _GridCardState extends State<GridCard> with SingleTickerProviderStateMixin
                             maxLines: 2,
                           ),
                         ],
+                      ),
+                    ),
+                    Positioned(
+                      right: 8,
+                      top: 8,
+                      child: Chip(
+                        label: Text(widget.tag),
+                        backgroundColor: widget.tag == 'Website' ? Colors.blue : Colors.green,
                       ),
                     ),
                   ],
