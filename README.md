@@ -1,4 +1,4 @@
-# own_game_web_show
+# shadow game center
 a website for showing games made.
 
 ## introduction
@@ -21,6 +21,4 @@ a website for showing games made.
 > [subFontPackage](https://github.com/shAdow-XJY/subFontPackage)
 
 ## build
-flutter build web --web-renderer html --release
-
-basehref = '/own_game_web_show/'
+flutter build web --web-renderer html --release --base-href /shadow_game_center/
