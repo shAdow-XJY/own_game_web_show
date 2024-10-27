@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
                   theme: ThemeData(
                     brightness: store.state.themeModel.brightness,
                     fontFamily: 'Noto',
+                    useMaterial3: true,
                   ),
                   initialRoute: '/homePage', //初始化加载的路由
                   onGenerateRoute: onGenerateRoute,
