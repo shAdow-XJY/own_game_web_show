@@ -21,6 +21,4 @@ a website for showing games made.
 > [subFontPackage](https://github.com/shAdow-XJY/subFontPackage)
 
 ## build
-flutter build web --web-renderer html --release
-
-basehref = '/own_game_web_show/'
+flutter build web --web-renderer html --release  --base-href /own_game_web_show/
