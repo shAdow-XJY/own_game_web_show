@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:own_game_web_show/home/home.dart';
 import 'package:own_game_web_show/redux/app_state/state.dart';
 import 'package:own_game_web_show/router/router.dart';
 import 'package:redux/redux.dart';

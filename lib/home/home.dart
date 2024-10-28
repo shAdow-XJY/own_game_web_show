@@ -20,6 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Map<String, String>> navigationObj = [
     {'gameName': 'Super Mario', 'imageUrl': 'assets/images/Super Mario.png'},
     {'gameName': 'Portal', 'imageUrl': 'assets/images/Portal.png'},
+    {'gameName': 'UE5 Role Animation', 'imageUrl': 'assets/images/unknown.png'},
   ];
 
   final List<Map<String, String>> websiteObj = [
@@ -35,9 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).primaryColorDark,
+          backgroundColor: Theme.of(context).primaryColor,
           title: const Text('Shadow\'s Game Center'),
           centerTitle: true,
           leading: StoreConnector<AppState, VoidCallback>(
@@ -73,53 +76,71 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           ],
         ),
-        body: ResponsiveBuilder(
-            builder: (context, sizingInformation){
-              if (sizingInformation.deviceScreenType == DeviceScreenType.mobile){
-                crossAxisCount = 1;
-              }else if(sizingInformation.deviceScreenType == DeviceScreenType.tablet){
-                crossAxisCount = 3;
-              }
-              return GridView.builder(
-                  itemCount: navigationObj.length + websiteObj.length,
-                  //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        body: Container(
+          margin: const EdgeInsets.all(0.0),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+          width: size.width,
+          height: size.height,
+          decoration: BoxDecoration(
+            border: Border.all(width: 2, color: Theme.of(context).primaryColor),
+            gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topCenter,
+                tileMode: TileMode.mirror,
+                colors: [
+                  Theme.of(context).primaryColor.withOpacity(0.5),
+                  Theme.of(context).colorScheme.surface,
+                ]
+            ),
+            boxShadow: const [BoxShadow()],
+          ),
+          child: ResponsiveBuilder(
+              builder: (context, sizingInformation){
+                if (sizingInformation.deviceScreenType == DeviceScreenType.mobile){
+                  crossAxisCount = 1;
+                }else if(sizingInformation.deviceScreenType == DeviceScreenType.tablet){
+                  crossAxisCount = 3;
+                }
+                return GridView.builder(
+                    itemCount: navigationObj.length + websiteObj.length,
+                    //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       //横轴元素个数
-                      crossAxisCount: crossAxisCount,
-                      //纵轴间距
-                      mainAxisSpacing: 5.0,
-                      //横轴间距
-                      crossAxisSpacing: 10.0,
-                      //子组件宽高长度比例
-                      childAspectRatio: 0.9),
-                  itemBuilder: (BuildContext context, int index) {
-                    // 根据索引确定是哪个列表
-                    if (index < navigationObj.length) {
-                      // 从 navigationObj 中获取数据
-                      var game = navigationObj[index];
-                      return GridCard(
-                        cardName: game['gameName'] ?? 'unknown',
-                        assetImage: AssetImage(game['imageUrl'] ?? 'assets/images/unknown.png'),
-                        onTap: () {
-                          Navigator.pushNamed(context, '/markdownPage', arguments: game['gameName']);
-                        },
-                        tag: 'Repository', // 标签显示
-                      );
-                    } else {
-                      // 从 websiteObj 中获取数据
-                      var game = websiteObj[index - navigationObj.length];
-                      return GridCard(
-                        cardName: game['gameName'] ?? '',
-                        assetImage: AssetImage(game['imageUrl'] ?? ''),
-                        onTap: () {
-                          launchUrl(Uri.parse(game['linkUrl'] ?? ''));
-                        },
-                        tag: 'Website', // 标签显示
-                      );
-                    };
-
-                  });
-            })
+                        crossAxisCount: crossAxisCount,
+                        //纵轴间距
+                        mainAxisSpacing: 5.0,
+                        //横轴间距
+                        crossAxisSpacing: 10.0,
+                        //子组件宽高长度比例
+                        childAspectRatio: 0.9),
+                    itemBuilder: (BuildContext context, int index) {
+                      // 根据索引确定是哪个列表
+                      if (index < navigationObj.length) {
+                        // 从 navigationObj 中获取数据
+                        var game = navigationObj[index];
+                        return GridCard(
+                          cardName: game['gameName'] ?? 'unknown',
+                          assetImage: AssetImage(game['imageUrl'] ?? 'assets/images/unknown.png'),
+                          onTap: () {
+                            Navigator.pushNamed(context, '/markdownPage', arguments: game['gameName']);
+                          },
+                          tag: 'Repository', // 标签显示
+                        );
+                      } else {
+                        // 从 websiteObj 中获取数据
+                        var game = websiteObj[index - navigationObj.length];
+                        return GridCard(
+                          cardName: game['gameName'] ?? '',
+                          assetImage: AssetImage(game['imageUrl'] ?? ''),
+                          onTap: () {
+                            launchUrl(Uri.parse(game['linkUrl'] ?? ''));
+                          },
+                          tag: 'Website', // 标签显示
+                        );
+                      }
+                    });
+              }),
+        ),
     );
   }
 }

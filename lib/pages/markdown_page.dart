@@ -22,6 +22,8 @@ class _MyHomePageState extends State<MarkDownPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -108,8 +110,7 @@ class _MyHomePageState extends State<MarkDownPage> {
                   );
                 }
               }
-          )
-
+          ),
       ),
     );
   }

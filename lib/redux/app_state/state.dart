@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -31,9 +30,7 @@ class AppState {
 
 }
 
-/**
- * 定义Reducer
- */
+/// 定义Reducer
 AppState appReducer(AppState state, action) {
   debugPrint(action.runtimeType.toString());
   switch(action.runtimeType){
